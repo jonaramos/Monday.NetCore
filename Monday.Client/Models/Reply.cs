@@ -36,7 +36,10 @@ namespace Monday.Client.Models
         /// </summary>
         [JsonProperty("text_body")]
         public string BodyText { get; set; }
-
+        
+        /// <summary>
+        ///     Collection of replies.
+        /// </summary>
         public List<Reply> Replies { get; set; }
 
         /// <summary>
