@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <IsPackable>false</IsPackable>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageLicenseFile>mit-license.txt</PackageLicenseFile>
     <Authors>Clint Masden</Authors>
