@@ -22,11 +22,17 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 5.0.x
+    
+    - name: 'Restore packages'
+      run: dotnet restore ${{ env.PROJECT_PATH }}
+
+    - name: 'Build project'
+      run: dotnet build ${{ env.PROJECT_PATH }} --no-restore --configuration Release
 
     - name: 'Pack project'
       #run: dotnet pack -c Release /p:Version=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See https://github.com/jonaramos/monday.client.v2/releases/tag/${{ github.release.tag_name }}" --no-restore --no-build --configuration Release --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
       #working-directory: ./jonaramos/monday.client.v2
-      run: dotnet pack ${{ env.PROJECT_PATH }} --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }} --configuration Release /p:Version=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See https://github.com/jonaramos/monday.client.v2/releases/tag/${{ github.release.tag_name }}" 
+      run: dotnet pack ${{ env.PROJECT_PATH }} --include-symbols --no-restore --no-build --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }} --configuration Release /p:Version=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See https://github.com/jonaramos/monday.client.v2/releases/tag/${{ github.release.tag_name }}" 
 
     - name: 'Push package'
       run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}\*.nupkg -s ${{ env.NUGET_SOURCE_URL }} -k ${{ secrets.NUGET_API_KEY }}
