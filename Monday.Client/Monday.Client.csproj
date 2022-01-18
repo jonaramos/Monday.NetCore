@@ -27,6 +27,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove=".github\**" />
+    <EmbeddedResource Remove=".github\**" />
+    <None Remove=".github\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="GraphQL.Client" Version="3.2.3" />
     <PackageReference Include="GraphQL.Client.Serializer.Newtonsoft" Version="3.2.3" />
     <PackageReference Include="xunit" Version="2.4.1" />
@@ -37,7 +43,5 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
-    <None Include=".github\workflows\ci.yml" />
-    <None Include=".github\workflows\nuget.yml" />
   </ItemGroup>
 </Project>
