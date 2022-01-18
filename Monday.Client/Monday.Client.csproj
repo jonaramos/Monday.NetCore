@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageLicenseFile>mit-license.txt</PackageLicenseFile>
     <Authors>Clint Masden</Authors>
     <Company>NA</Company>
@@ -10,12 +10,12 @@
     <Description>Monday Client Interface [API Version 2]</Description>
     <PackageTags>Monday Client API Monday.com</PackageTags>
     <PackageReleaseNotes>Updated dependencies</PackageReleaseNotes>
-    <PackageProjectUrl>https://github.com/clintmasden/monday.client.v2</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/clintmasden/monday.client.v2</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/jonaramos/monday.client.v2</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/jonaramos/monday.client.v2</RepositoryUrl>
     <PackageId>Monday.Client.v2</PackageId>
     <Version>1.0.0.5</Version>
-    <AssemblyVersion>1.0.0.3</AssemblyVersion>
-    <FileVersion>1.0.0.3</FileVersion>
+    <AssemblyVersion>1.0.0</AssemblyVersion>
+    <FileVersion>1.0.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
