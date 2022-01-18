@@ -1,0 +1,35 @@
+﻿name: "Deploy to NuGet"
+
+#on: ["push"]
+on:
+  release:
+    types: [published]
+
+env:
+  PROJECT_PATH: 'Monday.Client/Monday.Client.csproj'
+  PACKAGE_OUTPUT_DIRECTORY: ${{ github.workspace }}
+  NUGET_SOURCE_URL: 'https://api.nuget.org/v3/index.json'
+
+jobs:
+  deploy:
+    name: 'Deploy'
+    runs-on: 'windows-latest'
+    steps:
+    - name: 'Checkout'
+      uses: actions/checkout@v2
+
+    - name: 'Install dotnet'
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+
+    - name: 'Pack project'
+      #run: dotnet pack ${{ env.PROJECT_PATH }} --no-restore --no-build --configuration Release --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+      #run: dotnet pack -c Release /p:Version=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See https://github.com/jonaramos/monday.client.v2/releases/tag/${{ github.release.tag_name }}" --no-restore --no-build --configuration Release --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+      #working-directory: ./jonaramos/monday.client.v2
+      run: dotnet pack ${{ env.PROJECT_PATH }} -c Release /p:Version=${{ github.event.release.tag_name }} /p:PackageReleaseNotes="See https://github.com/jonaramos/monday.client.v2/releases/tag/${{ github.release.tag_name }}" --configuration Release --include-symbols --output ${{ env.PACKAGE_OUTPUT_DIRECTORY }}
+
+    - name: 'Push package'
+      run: dotnet nuget push ${{ env.PACKAGE_OUTPUT_DIRECTORY }}\*.nupkg -s ${{ env.NUGET_SOURCE_URL }} -k ${{ secrets.NUGET_API_KEY }}
+
+
