@@ -1,5 +1,8 @@
 ﻿namespace Monday.Client.Models
 {
+    /// <summary>
+    /// Describes the numerous types of Board columns.
+    /// </summary>
     public enum ColumnTypes
     {
         /// <summary>

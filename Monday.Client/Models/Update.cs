@@ -4,6 +4,9 @@ using Newtonsoft.Json;
 
 namespace Monday.Client.Models
 {
+    /// <summary>
+    /// Describes an Update request.
+    /// </summary>
     public class Update
     {
         /// <summary>

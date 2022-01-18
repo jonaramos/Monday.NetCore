@@ -79,7 +79,7 @@ namespace Monday.Client.Tests
         [TestMethod]
         public void GetItem_Pass()
         {
-            var result = _mondayClient.GetItem(234543614).Result;
+            var result = _mondayClient.GetItem("234543614").Result;
             Assert.IsNotNull(result);
         }
 
