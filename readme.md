@@ -1,5 +1,7 @@
-﻿# monday.client
+﻿# Monday.NetCore
 A .NET Standard/C# implementation of Monday.com API.
+
+This Project is based on the original work from **Clint Masden** at https://github.com/clintmasden/monday.client.v2.
 
 | Name | Resources |
 | ------ | ------ |
