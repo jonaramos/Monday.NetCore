@@ -9,12 +9,8 @@
     <Company>NA</Company>
     <Product>Monday Client [API Version 2]</Product>
     <Description>Monday Client Interface [API Version 2]</Description>
-    <PackageTags>Monday Client API Monday.com</PackageTags>
-    <PackageReleaseNotes>Updated dependencies</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/jonaramos/monday.client.v2</PackageProjectUrl>
     <RepositoryUrl>https://github.com/jonaramos/monday.client.v2</RepositoryUrl>
-    <PackageId>Monday.Client.v2</PackageId>
-    <Version>1.0.0</Version>
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>1.0.0</FileVersion>
   </PropertyGroup>
