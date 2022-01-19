@@ -1,9 +1,9 @@
 ﻿name: "Deploy to NuGet"
 
-on: ["push"]
-#on:
-  #release:
-    #types: [published]
+#on: ["push"]
+on:
+  release:
+    types: [published]
 
 env:
   PROJECT_PATH: 'Monday.Client/Monday.Client.csproj'
