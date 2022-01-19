@@ -5,22 +5,23 @@
     <IsPackable>true</IsPackable>
     <GeneratePackageOnBuild>False</GeneratePackageOnBuild>
     <PackageLicenseFile>mit-license.txt</PackageLicenseFile>
-    <Authors>Clint Masden</Authors>
+    <Authors>Jonathan Ramos</Authors>
     <Company>NA</Company>
-    <Product>Monday Client [API Version 2]</Product>
-    <Description>Monday Client Interface [API Version 2]</Description>
-    <PackageProjectUrl>https://github.com/jonaramos/monday.client.v2</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/jonaramos/monday.client.v2</RepositoryUrl>
+    <Product>Monday NetCore Client [API Version 2]</Product>
+    <Description>Monday NetCore Client Interface [API Version 2]</Description>
+    <PackageProjectUrl>https://github.com/jonaramos/Monday.NetCore</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/jonaramos/Monday.NetCore</RepositoryUrl>
+    <PackageId>Monday.NetCore</PackageId>
     <AssemblyVersion>1.0.0</AssemblyVersion>
     <FileVersion>1.0.0</FileVersion>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>C:\.Bucket\.github.source\monday.client.v2\Monday.Client\Monday.Client.xml</DocumentationFile>
+    <DocumentationFile>C:\.Bucket\.github.source\Monday.NetCore\Monday.Client\Monday.Client.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DocumentationFile>C:\.Bucket\github.source\monday.v2\Monday.Client\Monday.Client.xml</DocumentationFile>
+    <DocumentationFile>C:\.Bucket\github.source\Monday.NetCore\Monday.Client\Monday.Client.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
