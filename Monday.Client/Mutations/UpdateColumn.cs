@@ -13,7 +13,7 @@
         /// <summary>
         ///     The item's unique identifier.
         /// </summary>
-        public int ItemId { get; set; }
+        public string ItemId { get; set; }
 
         /// <summary>
         ///     The column's unique identifier.
