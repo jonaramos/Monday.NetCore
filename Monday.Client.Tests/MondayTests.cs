@@ -134,7 +134,7 @@ namespace Monday.Client.Tests
                 BoardAccessType = BoardAccessTypes.Public
             }).Result;
 
-            Assert.IsTrue(result > 0);
+            Assert.IsTrue(!string.IsNullOrWhiteSpace(result));
         }
 
         [TestMethod]
@@ -149,7 +149,7 @@ namespace Monday.Client.Tests
         {
             var result = _mondayClient.CreateColumn(new CreateColumn
             {
-                BoardId = 494930491,
+                BoardId = "494930491",
                 Name = "Unit Test Name",
                 ColumnType = ColumnTypes.Status
             }).Result;
@@ -162,8 +162,8 @@ namespace Monday.Client.Tests
         {
             var result = _mondayClient.UpdateColumn(new UpdateColumn
             {
-                BoardId = 494930491,
-                ItemId = 494930500,
+                BoardId = "494930491",
+                ItemId = "494930500",
                 ColumnId = "status",
                 Value = "{\"index\": 1}"
             }).Result;
@@ -176,7 +176,7 @@ namespace Monday.Client.Tests
         {
             var result = _mondayClient.CreateGroup(new CreateGroup
             {
-                BoardId = 494930491,
+                BoardId = "494930491",
                 Name = "Unit Test Name"
             }).Result;
 
@@ -204,7 +204,7 @@ namespace Monday.Client.Tests
         {
             var result = _mondayClient.CreateItem(new CreateItem
             {
-                BoardId = 494930491,
+                BoardId = "494930491",
                 GroupId = "unit_test_name",
                 Name = "Unit Test Name"
             }).Result;
@@ -249,7 +249,7 @@ namespace Monday.Client.Tests
         {
             var result = _mondayClient.CreateUpdate(new CreateUpdate
             {
-                ItemId = 494930492,
+                ItemId = "494930492",
                 Body = "Unit Test Body"
             }).Result;
 
@@ -261,7 +261,7 @@ namespace Monday.Client.Tests
         {
             var result = _mondayClient.CreateTag(new CreateTag
             {
-                BoardId = 494930491,
+                BoardId = "494930491",
                 Name = "Unit Test Tag"
             }).Result;
 

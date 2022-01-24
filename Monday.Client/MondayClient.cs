@@ -83,11 +83,11 @@ namespace Monday.Client
         /// </summary>
         /// <param name="itemId">The item’s unique identifier.</param>
         /// <returns></returns>
-        public async Task<bool> ArchiveItem(int itemId)
+        public async Task<bool> ArchiveItem(string itemId)
         {
             var request = new GraphQLRequest
             {
-                Query = @"mutation request($id:Int!) { archive_item (item_id: $id) {id}}",
+                Query = @"mutation request($id:ID!) { archive_item (item_id: $id) {id}}",
                 Variables = new
                 {
                     id = itemId
@@ -106,11 +106,11 @@ namespace Monday.Client
         /// </summary>
         /// <param name="itemId">The item’s unique identifier.</param>
         /// <returns></returns>
-        public async Task<bool> ClearItemUpdates(int itemId)
+        public async Task<bool> ClearItemUpdates(string itemId)
         {
             var request = new GraphQLRequest
             {
-                Query = @"mutation request($id:Int!) { clear_item_updates (item_id: $id) {id}}",
+                Query = @"mutation request($id:ID!) { clear_item_updates (item_id: $id) {id}}",
                 Variables = new
                 {
                     id = itemId
@@ -129,7 +129,7 @@ namespace Monday.Client
         /// </summary>
         /// <param name="createBoard">The mutation model.</param>
         /// <returns></returns>
-        public async Task<int> CreateBoard(CreateBoard createBoard)
+        public async Task<string> CreateBoard(CreateBoard createBoard)
         {
             var request = new GraphQLRequest
             {
@@ -253,11 +253,11 @@ namespace Monday.Client
         /// </summary>
         /// <param name="createUpdate">The mutation model.</param>
         /// <returns></returns>
-        public async Task<int> CreateUpdate(CreateUpdate createUpdate)
+        public async Task<string> CreateUpdate(CreateUpdate createUpdate)
         {
             var request = new GraphQLRequest
             {
-                Query = @"mutation request($itemId:Int $body:String!) { create_update (item_id: $itemId, body: $body) {id}}",
+                Query = @"mutation request($itemId:ID! $body:String!) { create_update (item_id: $itemId, body: $body) {id}}",
                 Variables = new
                 {
                     itemId = createUpdate.ItemId,
@@ -339,11 +339,11 @@ namespace Monday.Client
         /// </summary>
         /// <param name="itemId">The item’s unique identifier.</param>
         /// <returns></returns>
-        public async Task<bool> DeleteItem(int itemId)
+        public async Task<bool> DeleteItem(string itemId)
         {
             var request = new GraphQLRequest
             {
-                Query = @"mutation request($id:Int!) { delete_item (item_id: $id) {id}}",
+                Query = @"mutation request($id:ID!) { delete_item (item_id: $id) {id}}",
                 Variables = new
                 {
                     id = itemId
@@ -455,7 +455,7 @@ namespace Monday.Client
         {
             var request = new GraphQLRequest
             {
-                Query = @"query request($id:Int) { items(ids: [$id]) { id name board { id name description board_kind state board_folder_id } group { id title color archived deleted } column_values { id text title type value additional_info } subscribers { id name email } updates(limit: 100000) { id body text_body replies { id body text_body creator_id creator { id name email } created_at updated_at } creator_id creator { id name email } created_at updated_at } creator_id created_at updated_at creator { id name email } } } ",
+                Query = @"query request($id:ID!) { items(ids: [$id]) { id name board { id name description board_kind state board_folder_id } group { id title color archived deleted } column_values { id text title type value additional_info } subscribers { id name email } updates(limit: 100000) { id body text_body replies { id body text_body creator_id creator { id name email } created_at updated_at } creator_id creator { id name email } created_at updated_at } creator_id created_at updated_at creator { id name email } } } ",
                 Variables = new
                 {
                     id = itemId
@@ -669,7 +669,7 @@ namespace Monday.Client
         {
             var request = new GraphQLRequest
             {
-                Query = @"mutation request($boardId:Int! $itemId:Int $columnId: String! $value:JSON!) { change_column_value (board_id: $boardId, item_id: $itemId, column_id: $columnId, value: $value) { id }}",
+                Query = @"mutation request($boardId:ID! $itemId:ID! $columnId: String! $value:JSON!) { change_column_value (board_id: $boardId, item_id: $itemId, column_id: $columnId, value: $value) { id }}",
                 Variables = new
                 {
                     boardId = updateColumn.BoardId,
@@ -692,11 +692,11 @@ namespace Monday.Client
         /// <param name="itemId">The item’s unique identifier.</param>
         /// <param name="groupId">The group’s unique identifier</param>
         /// <returns></returns>
-        public async Task<bool> UpdateItemGroup(int itemId, string groupId)
+        public async Task<bool> UpdateItemGroup(string itemId, string groupId)
         {
             var request = new GraphQLRequest
             {
-                Query = @"mutation request($itemId:Int! $groupId:String!) { move_item_to_group (item_id: $itemId, group_id: $groupId) {id}}",
+                Query = @"mutation request($itemId:ID! $groupId:String!) { move_item_to_group (item_id: $itemId, group_id: $groupId) {id}}",
                 Variables = new
                 {
                     itemId,
