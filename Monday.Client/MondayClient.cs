@@ -35,11 +35,11 @@ namespace Monday.Client
         /// </summary>
         /// <param name="boardId">The board’s unique identifier.</param>
         /// <returns></returns>
-        public async Task<bool> ArchiveBoard(int boardId)
+        public async Task<bool> ArchiveBoard(string boardId)
         {
             var request = new GraphQLRequest
             {
-                Query = @"mutation request($id:Int!) { archive_board (board_id: $id) { id }}",
+                Query = @"mutation request($id:ID!) { archive_board (board_id: $id) { id }}",
                 Variables = new
                 {
                     id = boardId
@@ -59,11 +59,11 @@ namespace Monday.Client
         /// <param name="boardId">The board’s unique identifier.</param>
         /// <param name="groupId">The board's group identifier.</param>
         /// <returns></returns>
-        public async Task<bool> ArchiveGroup(int boardId, string groupId)
+        public async Task<bool> ArchiveGroup(string boardId, string groupId)
         {
             var request = new GraphQLRequest
             {
-                Query = @"mutation request($boardId:Int! $groupId:String!) { archive_group (board_id: $boardId, group_id: $groupId) { id }}",
+                Query = @"mutation request($boardId:ID! $groupId:String!) { archive_group (board_id: $boardId, group_id: $groupId) { id }}",
                 Variables = new
                 {
                     boardId,
@@ -157,7 +157,7 @@ namespace Monday.Client
         {
             var request = new GraphQLRequest
             {
-                Query = @"mutation request($boardId:Int! $name:String! $columnType:ColumnType $defaults:JSON) { create_column (board_id: $boardId, title: $name, column_type: $columnType, defaults: $defaults) { id }}",
+                Query = @"mutation request($boardId:ID! $name:String! $columnType:ColumnType $defaults:JSON) { create_column (board_id: $boardId, title: $name, column_type: $columnType, defaults: $defaults) { id }}",
                 Variables = new
                 {
                     boardId = createColumn.BoardId,
@@ -183,7 +183,7 @@ namespace Monday.Client
         {
             var request = new GraphQLRequest
             {
-                Query = @"mutation request($boardId:Int! $name:String!) { create_group (board_id: $boardId, group_name: $name) { id } }",
+                Query = @"mutation request($boardId:ID! $name:String!) { create_group (board_id: $boardId, group_name: $name) { id } }",
                 Variables = new
                 {
                     boardId = createGroup.BoardId,
@@ -207,7 +207,7 @@ namespace Monday.Client
         {
             var request = new GraphQLRequest
             {
-                Query = @"mutation request($boardId:Int! $groupId:String $name:String $columnValues:JSON) { create_item (board_id: $boardId, group_id: $groupId, item_name: $name, column_values: $columnValues) { id } }",
+                Query = @"mutation request($boardId:ID! $groupId:String $name:String $columnValues:JSON) { create_item (board_id: $boardId, group_id: $groupId, item_name: $name, column_values: $columnValues) { id } }",
                 Variables = new
                 {
                     boardId = createItem.BoardId,
@@ -233,7 +233,7 @@ namespace Monday.Client
         {
             var request = new GraphQLRequest
             {
-                Query = @"mutation request($boardId:Int $name:String) { create_or_get_tag  (board_id: $boardId, tag_name: $name) {id}}",
+                Query = @"mutation request($boardId:ID! $name:String) { create_or_get_tag  (board_id: $boardId, tag_name: $name) {id}}",
                 Variables = new
                 {
                     boardId = createTag.BoardId,
@@ -315,11 +315,11 @@ namespace Monday.Client
         /// <param name="boardId">The board’s unique identifier.</param>
         /// <param name="groupId">THe group's unique identifier</param>
         /// <returns></returns>
-        public async Task<bool> DeleteGroup(int boardId, string groupId)
+        public async Task<bool> DeleteGroup(string boardId, string groupId)
         {
             var request = new GraphQLRequest
             {
-                Query = @"mutation request($boardId:Int! $groupId:String!) { delete_group (board_id: $boardId, group_id: $groupId) { id }}",
+                Query = @"mutation request($boardId:ID! $groupId:String!) { delete_group (board_id: $boardId, group_id: $groupId) { id }}",
                 Variables = new
                 {
                     boardId,
@@ -362,11 +362,11 @@ namespace Monday.Client
         /// </summary>
         /// <param name="boardId">The board’s unique identifier.</param>
         /// <returns></returns>
-        public async Task<Board> GetBoard(int boardId)
+        public async Task<Board> GetBoard(string boardId)
         {
             var request = new GraphQLRequest
             {
-                Query = @"query request($id:Int) { boards(ids:[$id]) { id name description board_kind state board_folder_id permissions owner { id name email url photo_original title birthday country_code location time_zone_identifier phone mobile_phone is_guest is_pending enabled created_at } columns { id, title, type, archived settings_str } } }",
+                Query = @"query request($id:ID!) { boards(ids:[$id]) { id name description board_kind state board_folder_id permissions owner { id name email url photo_original title birthday country_code location time_zone_identifier phone mobile_phone is_guest is_pending enabled created_at } columns { id, title, type, archived settings_str } } }",
                 Variables = new
                 {
                     id = boardId
@@ -428,11 +428,11 @@ namespace Monday.Client
         /// </summary>
         /// <param name="boardId">The board’s unique identifier.</param>
         /// <returns></returns>
-        public async Task<List<Group>> GetGroups(int boardId)
+        public async Task<List<Group>> GetGroups(string boardId)
         {
             var request = new GraphQLRequest
             {
-                Query = @"query request($id:Int!) { boards(ids: [$id]) { groups { id title color archived deleted }}}",
+                Query = @"query request($id:ID!) { boards(ids: [$id]) { groups { id title color archived deleted }}}",
                 Variables = new
                 {
                     id = boardId
@@ -474,11 +474,11 @@ namespace Monday.Client
         /// </summary>
         /// <param name="boardId">The board’s unique identifier.</param>
         /// <returns></returns>
-        public async Task<List<Item>> GetItems(int boardId)
+        public async Task<List<Item>> GetItems(string boardId)
         {
             var request = new GraphQLRequest
             {
-                Query = @"query request($id:Int) { boards(ids:[$id]) { items(limit: 100000) { id name board { id name description board_kind } group { id title archived deleted } creator_id created_at updated_at creator { id name email } } } } ",
+                Query = @"query request($id:ID!) { boards(ids:[$id]) { items(limit: 100000) { id name board { id name description board_kind } group { id title archived deleted } creator_id created_at updated_at creator { id name email } } } } ",
                 Variables = new
                 {
                     id = boardId
@@ -538,11 +538,11 @@ namespace Monday.Client
         /// </summary>
         /// <param name="boardId">The board’s unique identifier.</param>
         /// <returns></returns>
-        public async Task<List<Tag>> GetTags(int boardId)
+        public async Task<List<Tag>> GetTags(string boardId)
         {
             var request = new GraphQLRequest
             {
-                Query = @"query request($id:Int!) { boards(ids: [$id]) { tags { id name color } } } ",
+                Query = @"query request($id:ID!) { boards(ids: [$id]) { tags { id name color } } } ",
                 Variables = new
                 {
                     id = boardId
